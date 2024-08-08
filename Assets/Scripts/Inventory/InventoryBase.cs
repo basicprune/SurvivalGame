@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class InventoryBase : MonoBehaviour
 {   
+    public List<InventorySlot> inventorySlotList = new List<InventorySlot>();
+
     public InventorySlot currentlySelectedSlot;
 
     public static InventoryBase Instace;
@@ -23,6 +25,22 @@ public class InventoryBase : MonoBehaviour
         // Debug.Log(itemPrefab.gameObject.name);
 
         currentlySelectedSlot.AddItemToSlot(itemPrefab);
+    }
+
+    public void PickUp(InventoryItemPickUp PickUpPrefab){
+
+        GetEmptySlot().AddItemToSlot(PickUpPrefab.InvetoryPrefab);
+        Destroy(PickUpPrefab.gameObject);
+    }
+
+    public InventorySlot GetEmptySlot()
+    {
+        foreach (InventorySlot slot in inventorySlotList){
+            if (slot.currentItem == null){
+                return slot;
+            }
+        }
+        return null;
     }
 
 

@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class InventorySlot : MonoBehaviour
 {
-    [SerializeField] private InvetoryItemPrefab currentItem;
+    public InvetoryItemPrefab currentItem;
     [SerializeField] private GameObject itemObject;
     [SerializeField] private TMP_Text quanityText;
 
@@ -18,8 +18,6 @@ public class InventorySlot : MonoBehaviour
     /// <param name="InputItemPrefab"></param>
     public void AddItemToSlot(GameObject InputItemPrefab)
     {   
-
-        
         InvetoryItemPrefab InputItem = InputItemPrefab.gameObject.GetComponent<InvetoryItemPrefab>();
 
         if (currentItem == null){
@@ -36,8 +34,7 @@ public class InventorySlot : MonoBehaviour
 
         // Set quantity text
         quanityText.text = currentItem.inventoryItemData.quantity.ToString() + "/100";
-
-    }
+    }   
 
     public void SetSelected()
     {
