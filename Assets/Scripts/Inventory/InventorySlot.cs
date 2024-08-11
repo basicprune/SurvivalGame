@@ -2,46 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Shows Inventory Items on the ui
 /// </summary>
 public class InventorySlot : MonoBehaviour
 {   
-    public InvetoryItemPrefab currentItem;
+
+    [System.Serializable]
+    public class ItemData{
+        public float quantity;
+        public string itemType;
+        public Sprite ItemCover;
+    }
+    public ItemData itemData = new ItemData();
+    
+    public bool InUse = false;
     [SerializeField] private GameObject itemObject;
     [SerializeField] private TMP_Text quanityText;
+    [SerializeField] private Image uiCoverImage;
 
     /// <summary>
     /// Instaniates item to ui slot
     /// </summary>
     /// <param name="InputItemPrefab"></param>
-    public void AddItemToSlot(GameObject InputItemPrefab)
+    public void AddItemToSlot(InventoryItemData InputItemData)
     {   
-        InvetoryItemPrefab InputItem = InputItemPrefab.gameObject.GetComponent<InvetoryItemPrefab>();
-        InventoryBase.Instace.inventoryItemPrefabs.Add(InputItem);
-
-
-
-        if (currentItem == null){
-            currentItem = InputItem;
-            Instantiate(InputItem, gameObject.transform);
+        
+        if (InputItemData.quantity + itemData.quantity <= 100f){
             
-            // currentItem.gameObject.transform.SetParent(this.gameObject.transform);
-        }
-        else if(currentItem.itemType == InputItem.itemType)
-        {   
-            // type is basically wood,iron ETC
-            currentItem.AddItemQuantity(InputItem.inventoryItemData.quantity);
+            uiCoverImage.enabled = true;
+
+            itemData.ItemCover = InputItemData.CoverImage;
+            uiCoverImage.sprite = itemData.ItemCover;
+
+            itemData.itemType = InputItemData.itemType;
+
+            itemData.quantity += InputItemData.quantity;
+            quanityText.text = itemData.quantity.ToString();
+        }else if (InputItemData.quantity + itemData.quantity > 100f){
+            InventoryBase.Instace.GetEmptySlot().AddItemToSlot(InputItemData);
         }
 
-        // Set quantity text
-        quanityText.text = currentItem.inventoryItemData.quantity.ToString() + "/100";
     }   
-
-    public void SetSelected()
-    {
-        InventoryBase.Instace.currentlySelectedSlot = gameObject.GetComponent<InventorySlot>();
-    }
-
 }

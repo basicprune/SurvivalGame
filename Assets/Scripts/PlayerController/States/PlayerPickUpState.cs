@@ -65,7 +65,7 @@ public class PlayerPickUpState : PlayerBaseState
         if (Input.GetKeyDown(KeyCode.E))
         { 
 
-          InventoryBase.Instace.PickUp(hit.collider.gameObject.GetComponent<InventoryItemPickUp>());
+          InventoryBase.Instace.PickUp(hit.collider.gameObject.GetComponent<InventoryItemData>());
           Debug.Log("Cube Picked Up");
 
         }

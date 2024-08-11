@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 /// <summary>
@@ -7,7 +8,9 @@ using UnityEngine;
 /// </summary>
 public class InventoryItemData : MonoBehaviour
 {
+    
     public float quantity;
     public string itemType;
+    public Sprite CoverImage;
 
 }

@@ -7,13 +7,12 @@ using UnityEngine;
 /// </summary>
 public class InventoryBase : MonoBehaviour
 {   
+    // UI
     [SerializeField] private Canvas inventoryCanvas;
     public GameObject pickUpText;
+    // List
     public List<InventorySlot> inventorySlotList = new List<InventorySlot>();
-    public List<InvetoryItemPrefab> inventoryItemPrefabs = new List<InvetoryItemPrefab>();
-
-    public InventorySlot currentlySelectedSlot;
-
+    // Instance
     public static InventoryBase Instace;
     
     private void Awake() {
@@ -32,37 +31,15 @@ public class InventoryBase : MonoBehaviour
         }
     }
 
-    public void AddToSlot(GameObject itemPrefab){
-        // Debug.Log(itemPrefab.gameObject.name);
-
-        currentlySelectedSlot.AddItemToSlot(itemPrefab);
-    }
-
-    public void PickUp(InventoryItemPickUp PickUpPrefab){
-        // if (CheckForSpaceInStacks(PickUpPrefab.GetComponent<InvetoryItemPrefab>()) != null){
-            CheckForSpaceInStacks(PickUpPrefab.InvetoryPrefab.GetComponent<InvetoryItemPrefab>()).AddItemToSlot(PickUpPrefab.InvetoryPrefab);
-        // }else{
-        //     GetEmptySlot().AddItemToSlot(PickUpPrefab.InvetoryPrefab); 
-        // }
-        Destroy(PickUpPrefab.gameObject);
-    }
-    public InventorySlot CheckForSpaceInStacks(InvetoryItemPrefab itemPrefab)
-    {
-        foreach (InventorySlot slot in inventorySlotList){
-            if (slot.currentItem != null)
-            {
-                if (slot.currentItem.itemType == itemPrefab.itemType && slot.currentItem.inventoryItemData.quantity + itemPrefab.inventoryItemData.quantity != 100f){
-                    return slot;
-                }
-            }
-        }
-        return GetEmptySlot();
+    public void PickUp(InventoryItemData PickedUpItemData){
+        inventorySlotList[0].AddItemToSlot(PickedUpItemData);
+        Destroy(PickedUpItemData.gameObject);
     }
 
     public InventorySlot GetEmptySlot()
     {
         foreach (InventorySlot slot in inventorySlotList){
-            if (slot.currentItem == null){
+            if (slot.itemData.quantity < 100f){
                 return slot;
             }
         }
