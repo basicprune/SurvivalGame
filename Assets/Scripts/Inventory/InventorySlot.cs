@@ -50,7 +50,7 @@ public class InventorySlot : MonoBehaviour
             isAtMaxCap = true;
 
             if (InputItemData.quantity > 0f){
-                InventoryBase.Instace.GetEmptySlot().AddItemToSlot(InputItemData);
+                InventoryBase.Instace.GetEmptySlot(InputItemData.itemType).AddItemToSlot(InputItemData);
             }
         }else if(Sum <= MaxCap){
             itemData.quantity += InputItemData.quantity;

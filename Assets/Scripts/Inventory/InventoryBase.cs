@@ -32,15 +32,18 @@ public class InventoryBase : MonoBehaviour
     }
 
     public void PickUp(InventoryItemData PickedUpItemData){
-        GetEmptySlot().AddItemToSlot(PickedUpItemData);
+        GetEmptySlot(PickedUpItemData.itemType).AddItemToSlot(PickedUpItemData);
         Destroy(PickedUpItemData.gameObject);
     }
 
-    public InventorySlot GetEmptySlot()
+    public InventorySlot GetEmptySlot(string itemType)
     {
         foreach (InventorySlot slot in inventorySlotList){
             if (slot.isAtMaxCap == false){
-                return slot;
+                if (slot.itemData.itemType == itemType || slot.itemData.itemType == ""){
+                    return slot;
+                }
+                // return slot;
             }
         }
         return null;

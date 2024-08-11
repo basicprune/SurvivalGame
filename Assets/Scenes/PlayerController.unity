@@ -923,7 +923,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7ef9cbce9d9df9347af99dd5223d4c0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -980,9 +980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9879736b2e98a964ebc32f5c06166dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quantity: 50
-  itemType: Wood
-  CoverImage: {fileID: 21300000, guid: 51574d48e8dd2954c9f53fbe90cbc5aa, type: 3}
+  quantity: 1250
+  itemType: Rock
+  CoverImage: {fileID: 21300000, guid: d70f454332120ad4885244fc082ed3fb, type: 3}
 --- !u!1 &200272753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,7 +1280,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 757e0d3ceb6249442abdfd266bc9cba2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1940,7 +1940,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 757e0d3ceb6249442abdfd266bc9cba2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2608,7 +2608,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7ef9cbce9d9df9347af99dd5223d4c0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2666,8 +2666,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quantity: 50
-  itemType: Wood
-  CoverImage: {fileID: 21300000, guid: 51574d48e8dd2954c9f53fbe90cbc5aa, type: 3}
+  itemType: Rock
+  CoverImage: {fileID: 21300000, guid: d70f454332120ad4885244fc082ed3fb, type: 3}
 --- !u!1 &1154498931
 GameObject:
   m_ObjectHideFlags: 0
@@ -3309,7 +3309,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 757e0d3ceb6249442abdfd266bc9cba2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3662,7 +3662,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7ef9cbce9d9df9347af99dd5223d4c0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3720,8 +3720,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quantity: 50
-  itemType: Wood
-  CoverImage: {fileID: 21300000, guid: 51574d48e8dd2954c9f53fbe90cbc5aa, type: 3}
+  itemType: Rock
+  CoverImage: {fileID: 21300000, guid: d70f454332120ad4885244fc082ed3fb, type: 3}
 --- !u!1001 &1777852886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4299,7 +4299,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7ef9cbce9d9df9347af99dd5223d4c0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4357,8 +4357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quantity: 50
-  itemType: Wood
-  CoverImage: {fileID: 21300000, guid: 51574d48e8dd2954c9f53fbe90cbc5aa, type: 3}
+  itemType: Rock
+  CoverImage: {fileID: 21300000, guid: d70f454332120ad4885244fc082ed3fb, type: 3}
 --- !u!1001 &2109522061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4698,7 +4698,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 757e0d3ceb6249442abdfd266bc9cba2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5372,6 +5372,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 324286375}
     m_Modifications:
+    - target: {fileID: 1809510335771508751, guid: 7683219c23adf5e42888a9a6545294f1, type: 3}
+      propertyPath: itemData.quantity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2723647073156687640, guid: 7683219c23adf5e42888a9a6545294f1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5526,7 +5530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9879736b2e98a964ebc32f5c06166dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quantity: 1000
+  quantity: 50
   itemType: Wood
   CoverImage: {fileID: 21300000, guid: 51574d48e8dd2954c9f53fbe90cbc5aa, type: 3}
 --- !u!1660057539 &9223372036854775807
