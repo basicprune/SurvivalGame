@@ -19,6 +19,7 @@ public class InventorySlot : MonoBehaviour
     public void AddItemToSlot(GameObject InputItemPrefab)
     {   
         InvetoryItemPrefab InputItem = InputItemPrefab.gameObject.GetComponent<InvetoryItemPrefab>();
+        InventoryBase.Instace.inventoryItemPrefabs.Add(InputItem);
 
         if (currentItem == null){
             currentItem = InputItem;

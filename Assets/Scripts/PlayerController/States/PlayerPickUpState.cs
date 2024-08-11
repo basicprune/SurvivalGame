@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWalkState : PlayerBaseState
+public class PlayerPickUpState : PlayerBaseState
 {
   private Rigidbody rb;
   public override void EnterState(PlayerStateManager player){
@@ -10,7 +10,7 @@ public class PlayerWalkState : PlayerBaseState
 
     rb = player.rb;
 
-    Debug.Log("WalkState Entered");
+    Debug.Log("PickUp Entered");
   }
 
   public void Walk()
@@ -47,14 +47,40 @@ public class PlayerWalkState : PlayerBaseState
 
     player.capsule.transform.Rotate(Vector3.up * inputX);
 
-
-    
-    
 	}
+
+  public void PickUp(PlayerStateManager player)
+  {
+    RaycastHit hit;
+
+    if (Physics.Raycast(player.cam.transform.position, player.cam.transform.forward, out hit, 50f))
+    {
+      if (hit.collider.tag == "PickUp")
+      {
+        //
+          // Add ui popup to show you can pick up
+          InventoryBase.Instace.pickUpText.SetActive(true);
+          Debug.Log("Pick Up");
+        
+        if (Input.GetKeyDown(KeyCode.E))
+        { 
+
+          InventoryBase.Instace.PickUp(hit.collider.gameObject.GetComponent<InventoryItemPickUp>());
+          Debug.Log("Cube Picked Up");
+
+        }
+      }
+      else 
+      {
+          InventoryBase.Instace.pickUpText.SetActive(false);
+      }
+    }
+  }
 
 
   public override void UpdateState(PlayerStateManager player)
   {
+   PickUp(player);
    Look(player);
    Walk();
   }

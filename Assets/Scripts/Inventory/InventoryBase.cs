@@ -7,7 +7,10 @@ using UnityEngine;
 /// </summary>
 public class InventoryBase : MonoBehaviour
 {   
+    [SerializeField] private Canvas inventoryCanvas;
+    public GameObject pickUpText;
     public List<InventorySlot> inventorySlotList = new List<InventorySlot>();
+    public List<InvetoryItemPrefab> inventoryItemPrefabs = new List<InvetoryItemPrefab>();
 
     public InventorySlot currentlySelectedSlot;
 
@@ -18,6 +21,14 @@ public class InventoryBase : MonoBehaviour
             Instace = this;
         }else {
             Destroy(this);
+        }
+    }
+    public void ToggleInvetory(){
+        if (inventoryCanvas.enabled == true){
+            inventoryCanvas.enabled = false;
+        }
+        else{
+            inventoryCanvas.enabled = true;
         }
     }
 
@@ -41,6 +52,12 @@ public class InventoryBase : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.I)){
+            ToggleInvetory();
+        }
     }
 
 

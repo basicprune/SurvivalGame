@@ -5,14 +5,21 @@ using UnityEngine;
 public class PlayerStateManager : MonoBehaviour
 {
     // public Player
+
+    public Rigidbody rb;
+    public GameObject capsule;
+    public GameObject cam;
+
     public PlayerBaseState _currentState;
     public PlayerWalkState _playerWalkState = new PlayerWalkState();
     public PlayerIdleState _playerIdleState = new PlayerIdleState();
+    public PlayerPickUpState _playerPickUpState = new PlayerPickUpState();
+    
 
         // Start is called before the first frame update
     void Start()
     {
-        _currentState = _playerIdleState;
+        _currentState = _playerPickUpState;
 
         _currentState.EnterState(this);
     }
