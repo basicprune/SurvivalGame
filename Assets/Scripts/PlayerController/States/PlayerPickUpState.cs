@@ -83,6 +83,10 @@ public class PlayerPickUpState : PlayerBaseState
    PickUp(player);
    Look(player);
    Walk();
+
+   if (Input.GetKeyDown(KeyCode.I)){
+    player.SwitchState(player._playerInventoryState);
+   }
   }
   
   public override void OnCollisionEnterState(PlayerStateManager player, Collision collision){

@@ -39,9 +39,24 @@ public class InventoryBase : MonoBehaviour
     }
 
     public void PickUp(InventoryItemPickUp PickUpPrefab){
-
-        GetEmptySlot().AddItemToSlot(PickUpPrefab.InvetoryPrefab);
+        // if (CheckForSpaceInStacks(PickUpPrefab.GetComponent<InvetoryItemPrefab>()) != null){
+            CheckForSpaceInStacks(PickUpPrefab.InvetoryPrefab.GetComponent<InvetoryItemPrefab>()).AddItemToSlot(PickUpPrefab.InvetoryPrefab);
+        // }else{
+        //     GetEmptySlot().AddItemToSlot(PickUpPrefab.InvetoryPrefab); 
+        // }
         Destroy(PickUpPrefab.gameObject);
+    }
+    public InventorySlot CheckForSpaceInStacks(InvetoryItemPrefab itemPrefab)
+    {
+        foreach (InventorySlot slot in inventorySlotList){
+            if (slot.currentItem != null)
+            {
+                if (slot.currentItem.itemType == itemPrefab.itemType && slot.currentItem.inventoryItemData.quantity + itemPrefab.inventoryItemData.quantity != 100f){
+                    return slot;
+                }
+            }
+        }
+        return GetEmptySlot();
     }
 
     public InventorySlot GetEmptySlot()
@@ -53,12 +68,4 @@ public class InventoryBase : MonoBehaviour
         }
         return null;
     }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.I)){
-            ToggleInvetory();
-        }
-    }
-
-
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 /// Shows Inventory Items on the ui
 /// </summary>
 public class InventorySlot : MonoBehaviour
-{
+{   
     public InvetoryItemPrefab currentItem;
     [SerializeField] private GameObject itemObject;
     [SerializeField] private TMP_Text quanityText;
@@ -20,6 +20,8 @@ public class InventorySlot : MonoBehaviour
     {   
         InvetoryItemPrefab InputItem = InputItemPrefab.gameObject.GetComponent<InvetoryItemPrefab>();
         InventoryBase.Instace.inventoryItemPrefabs.Add(InputItem);
+
+
 
         if (currentItem == null){
             currentItem = InputItem;

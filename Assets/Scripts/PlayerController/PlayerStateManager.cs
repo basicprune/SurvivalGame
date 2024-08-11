@@ -14,6 +14,8 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerWalkState _playerWalkState = new PlayerWalkState();
     public PlayerIdleState _playerIdleState = new PlayerIdleState();
     public PlayerPickUpState _playerPickUpState = new PlayerPickUpState();
+    public PlayerInventoryState _playerInventoryState = new PlayerInventoryState();
+    
     
 
         // Start is called before the first frame update
