@@ -18,7 +18,8 @@ public class InventorySlot : MonoBehaviour
     }
     public ItemData itemData = new ItemData();
     
-    public bool InUse = false;
+    public float MaxCap = 100f;
+    public bool isAtMaxCap = false;
     [SerializeField] private GameObject itemObject;
     [SerializeField] private TMP_Text quanityText;
     [SerializeField] private Image uiCoverImage;
@@ -28,22 +29,41 @@ public class InventorySlot : MonoBehaviour
     /// </summary>
     /// <param name="InputItemPrefab"></param>
     public void AddItemToSlot(InventoryItemData InputItemData)
-    {   
+    {           
         
-        if (InputItemData.quantity + itemData.quantity <= 100f){
+        uiCoverImage.enabled = true;
+
+        itemData.ItemCover = InputItemData.CoverImage;
+        uiCoverImage.sprite = itemData.ItemCover;
+
+        itemData.itemType = InputItemData.itemType;
+
+        float Sum = InputItemData.quantity + itemData.quantity;
             
-            uiCoverImage.enabled = true;
+        // if sum is greater then max then run function in an empty slot
+        if ( Sum > MaxCap){
+            
+            float addMore = MaxCap - itemData.quantity;
+            itemData.quantity += addMore;
+            InputItemData.quantity -= addMore;
+            
+            isAtMaxCap = true;
 
-            itemData.ItemCover = InputItemData.CoverImage;
-            uiCoverImage.sprite = itemData.ItemCover;
-
-            itemData.itemType = InputItemData.itemType;
-
+            if (InputItemData.quantity > 0f){
+                InventoryBase.Instace.GetEmptySlot().AddItemToSlot(InputItemData);
+            }
+        }else if(Sum <= MaxCap){
             itemData.quantity += InputItemData.quantity;
-            quanityText.text = itemData.quantity.ToString();
-        }else if (InputItemData.quantity + itemData.quantity > 100f){
-            InventoryBase.Instace.GetEmptySlot().AddItemToSlot(InputItemData);
         }
+
+        quanityText.text = itemData.quantity.ToString();
+
+        if (itemData.quantity == MaxCap){
+            isAtMaxCap = true;
+        }
+
+
+        
 
     }   
 }

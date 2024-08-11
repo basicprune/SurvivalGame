@@ -60,7 +60,7 @@ public class PlayerPickUpState : PlayerBaseState
         //
           // Add ui popup to show you can pick up
           InventoryBase.Instace.pickUpText.SetActive(true);
-          Debug.Log("Pick Up");
+          // Debug.Log("Pick Up");
         
         if (Input.GetKeyDown(KeyCode.E))
         { 
