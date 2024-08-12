@@ -13,16 +13,16 @@ public class InventorySlot : MonoBehaviour
     [System.Serializable]
     public class ItemData{
         public float quantity;
-        public string itemType;
+        public string itemType = "";
         public Sprite ItemCover;
     }
     public ItemData itemData = new ItemData();
     
     public float MaxCap = 100f;
     public bool isAtMaxCap = false;
-    [SerializeField] private GameObject itemObject;
     [SerializeField] private TMP_Text quanityText;
     [SerializeField] private Image uiCoverImage;
+    [SerializeField] private Image hotBarImage;
 
     /// <summary>
     /// Instaniates item to ui slot
@@ -56,14 +56,36 @@ public class InventorySlot : MonoBehaviour
             itemData.quantity += InputItemData.quantity;
         }
 
-        quanityText.text = itemData.quantity.ToString();
+        quanityText.text = itemData.quantity.ToString() + "/100";
 
         if (itemData.quantity == MaxCap){
             isAtMaxCap = true;
         }
-
-
-        
-
     }   
+
+    public void ResetSlot(){
+        itemData = new ItemData();
+
+        uiCoverImage.enabled = false;
+        isAtMaxCap = false;
+        quanityText.text = "0/100";
+
+    }
+    
+
+    public void AlphaSwap(bool isSelected){
+        if (isSelected == true){
+            var tempColor = hotBarImage.color;
+
+            tempColor.a = 0.6078f;
+
+            hotBarImage.color = tempColor;
+        }else {
+            var tempColor = hotBarImage.color;
+
+            tempColor.a = 0.3922f;
+
+            hotBarImage.color = tempColor;
+        }
+    }
 }

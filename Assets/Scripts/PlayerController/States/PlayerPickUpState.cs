@@ -85,7 +85,7 @@ public class PlayerPickUpState : PlayerBaseState
    Walk();
 
    if (Input.GetKeyDown(KeyCode.I)){
-    player.SwitchState(player._playerInventoryState);
+    player.SwitchState(player._playerUIState);
    }
   }
   

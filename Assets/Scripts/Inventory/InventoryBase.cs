@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -11,12 +12,21 @@ public class InventoryBase : MonoBehaviour
     
 
     // UI
-    [SerializeField] private Canvas inventoryCanvas;
-    public GameObject pickUpText;
+        [SerializeField] private Canvas inventoryCanvas;
+        public GameObject pickUpText;
+        public GameObject merchantText;
+        public TMP_Text balanceText;
+        public float balance;
     // List
-    public List<InventorySlot> inventorySlotList = new List<InventorySlot>();
+        public List<InventorySlot> inventorySlotList = new List<InventorySlot>();
+        public List<InventorySlot> hotBarSlotList = new List<InventorySlot>();
+    // Slot References
+        public InventorySlot currentSlot;
+        public int currentSlotID = 0;
     // Instance
-    public static InventoryBase Instace;
+        public static InventoryBase Instace;    
+
+    
     
     private void Awake() {
         if (Instace == null){
@@ -25,6 +35,12 @@ public class InventoryBase : MonoBehaviour
             Destroy(this);
         }
     }
+
+    private void Start() {
+        currentSlot = hotBarSlotList[currentSlotID];
+        currentSlot.AlphaSwap(true);
+    }
+
     public void ToggleInvetory(){
         if (inventoryCanvas.enabled == true){
             inventoryCanvas.enabled = false;
@@ -39,6 +55,14 @@ public class InventoryBase : MonoBehaviour
         Destroy(PickedUpItemData.gameObject);
     }
 
+    public void Sell(SellResources sellResources){
+        if (currentSlot.itemData.itemType != ""){
+            sellResources.Sell();
+        }
+
+        currentSlot.ResetSlot();
+    }
+
     public InventorySlot GetEmptySlot(string itemType)
     {
         foreach (InventorySlot slot in inventorySlotList){
@@ -50,5 +74,9 @@ public class InventoryBase : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void Update() {
+        balanceText.text = balance.ToString("C");
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventoryState : PlayerBaseState
+public class PlayerUIState : PlayerBaseState
 {
   public override void EnterState(PlayerStateManager player){
     Cursor.lockState = CursorLockMode.None;

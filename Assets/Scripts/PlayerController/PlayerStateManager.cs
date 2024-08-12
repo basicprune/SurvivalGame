@@ -14,7 +14,7 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerWalkState _playerWalkState = new PlayerWalkState();
     public PlayerIdleState _playerIdleState = new PlayerIdleState();
     public PlayerPickUpState _playerPickUpState = new PlayerPickUpState();
-    public PlayerInventoryState _playerInventoryState = new PlayerInventoryState();
+    public PlayerUIState _playerUIState = new PlayerUIState();
     public PlayerToolState _playerToolState = new PlayerToolState();
     
     

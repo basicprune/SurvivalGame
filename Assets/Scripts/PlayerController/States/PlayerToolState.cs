@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerToolState : PlayerBaseState
 {
@@ -80,19 +80,73 @@ public class PlayerToolState : PlayerBaseState
         if (Input.GetMouseButtonDown(0))
         hit.collider.GetComponent<ResourceNode>().HitNode(25f);
       }
+
+      if (hit.collider.tag == "Merchant"){
+        InventoryBase.Instace.merchantText.SetActive(true);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        { 
+
+          InventoryBase.Instace.Sell(hit.collider.gameObject.GetComponent<SellResources>());
+          Debug.Log("Sell Pressed");
+
+        }
+
+      }else{
+        InventoryBase.Instace.merchantText.SetActive(false);
+
+      }
     }
+  }
+
+  public void ScrollHotBar(){
+    if (Input.GetAxis("Mouse ScrollWheel") > 0f ){
+      InventoryBase.Instace.currentSlot.AlphaSwap(false);
+
+      if (InventoryBase.Instace.currentSlotID == 0){
+
+        InventoryBase.Instace.currentSlotID = 6;
+        InventoryBase.Instace.currentSlot = InventoryBase.Instace.hotBarSlotList[InventoryBase.Instace.currentSlotID];
+        
+      }else {
+        
+        InventoryBase.Instace.currentSlotID -= 1;
+        InventoryBase.Instace.currentSlot = InventoryBase.Instace.hotBarSlotList[InventoryBase.Instace.currentSlotID];
+        
+      }
+      InventoryBase.Instace.currentSlot.AlphaSwap(true);
+    }
+    else if (Input.GetAxis("Mouse ScrollWheel") < 0f){
+      InventoryBase.Instace.currentSlot.AlphaSwap(false);
+      
+      if (InventoryBase.Instace.currentSlotID == 6)
+      {
+        InventoryBase.Instace.currentSlotID = 0;
+        InventoryBase.Instace.currentSlot = InventoryBase.Instace.hotBarSlotList[InventoryBase.Instace.currentSlotID];
+      }
+      else 
+      {
+        InventoryBase.Instace.currentSlotID += 1;
+        InventoryBase.Instace.currentSlot = InventoryBase.Instace.hotBarSlotList[InventoryBase.Instace.currentSlotID];
+      }
+      InventoryBase.Instace.currentSlot.AlphaSwap(true);
+
+    }
+
+
   }
 
 
 
   public override void UpdateState(PlayerStateManager player)
   {
+   ScrollHotBar();
    PickUp(player);
    Look(player);
    Walk();
 
    if (Input.GetKeyDown(KeyCode.I)){
-    player.SwitchState(player._playerInventoryState);
+    player.SwitchState(player._playerUIState);
    }
   }
   
