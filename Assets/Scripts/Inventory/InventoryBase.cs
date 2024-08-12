@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class InventoryBase : MonoBehaviour
 {   
+
+    
+
     // UI
     [SerializeField] private Canvas inventoryCanvas;
     public GameObject pickUpText;

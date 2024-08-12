@@ -15,13 +15,14 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerIdleState _playerIdleState = new PlayerIdleState();
     public PlayerPickUpState _playerPickUpState = new PlayerPickUpState();
     public PlayerInventoryState _playerInventoryState = new PlayerInventoryState();
+    public PlayerToolState _playerToolState = new PlayerToolState();
     
     
 
         // Start is called before the first frame update
     void Start()
     {
-        _currentState = _playerPickUpState;
+        _currentState = _playerToolState;
 
         _currentState.EnterState(this);
     }
